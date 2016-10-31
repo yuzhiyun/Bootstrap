@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付</title>
+</head>
+<body>
+
+<p id="index"></p>
+<img id="show" >
+<script>
+//    通过cookie获取到上一个页面传递过来的索引
+    var index=document.cookie;
+    document.getElementById("index").innerHTML=index;
+    var srcList = [
+        "img/a.jpg",
+        "img/b.jpg",
+        "img/c.jpg",
+        "img/d.jpg",
+        "img/e.jpg",
+        "img/f.jpg"
+    ];
+    x = document.getElementById("show");
+//根据索引指定具体图片，然后显示出来
+    x.src=srcList[index];
+</script>
+</body>
+</html>
