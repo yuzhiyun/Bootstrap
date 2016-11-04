@@ -3,15 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title>支付</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<p id="index"></p>
-<img id="show" >
+
+<nav class="navbar navbar-default" role="navigation" style="padding-left: 50px;">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">支付</a>
+    </div>
+    <!--<ul class="nav nav-pills" >-->
+        <!--<li class="active"><a>支付</a></li>-->
+
+    <!--</ul>-->
+</nav>
+<!--<p id="index"></p><br>-->
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-6 column">
+            <img id="show" alt="140x140"  class="img-thumbnail" />
+        </div>
+        <div class="col-md-6 column">
+            <p>
+                探索小而美的奥秘，让它也可以大起来。具有 AR 魔法功能的儿童摆台产品，
+                为孩子们呈现 “变出来” 的世界。孩子们可以在智能设备上为家长表演自己的故事，还有来自他们天马行空想象世界的真实呈现。
+            </p>
+            <div class="alert alert-dismissable alert-success">
+
+                <h4>
+                    魔法相框
+                </h4> 让千变万化的世界从相册里跳出来。
+                这里不仅有美轮美奂的“独立主题相册”，还有“角色扮演主题相册” 和 “故事书主题相册”，孩子们变身童话的主角，
+                演绎属于自己的故事。有了这些让人爱不释手的相册，消费者在面对商家的时候，很快便从“要我拍” 变为 “我要拍”。
+
+            </div>
+
+            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal" >支付</button>
+
+            <!-- 模态框（Modal） -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                支付
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            恭喜您，支付成功！！！
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                            </button>
+
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <script>
 //    通过cookie获取到上一个页面传递过来的索引
-    var index=document.cookie;
-    document.getElementById("index").innerHTML=index;
+function getCookie(cname)
+{
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++)
+    {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
+    var index=getCookie("id");
+//    document.getElementById("index").innerHTML="图片索引是"+index;
     var srcList = [
         "img/a.jpg",
         "img/b.jpg",
