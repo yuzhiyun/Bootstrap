@@ -37,38 +37,36 @@
                 </h4> 让千变万化的世界从相册里跳出来。
                 这里不仅有美轮美奂的“独立主题相册”，还有“角色扮演主题相册” 和 “故事书主题相册”，孩子们变身童话的主角，
                 演绎属于自己的故事。有了这些让人爱不释手的相册，消费者在面对商家的时候，很快便从“要我拍” 变为 “我要拍”。
-
             </div>
 
-            <button class="btn btn-primary btn-lg btn-block" onclick="test()">测试ajax</button>
-            <p id="server_msg">来自服务器数据</p>
-            <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">支付</button>
+            <button class="btn btn-primary btn-lg btn-block" onclick="pay()">支付</button>
+            <!--<p id="server_msg">来自服务器数据</p>-->
+            <!--<button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">支付</button>-->
             <!-- 模态框（Modal） -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                &times;
-                            </button>
-                            <h4 class="modal-title" id="myModalLabel">
-                                支付
-                            </h4>
-                        </div>
-                        <div class="modal-body">
-                            恭喜您，支付成功！！！
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                            </button>
-
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal -->
-            </div>
+            <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
+            <!--aria-hidden="true">-->
+            <!--<div class="modal-dialog">-->
+            <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+            <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">-->
+            <!--&times;-->
+            <!--</button>-->
+            <!--<h4 class="modal-title" id="myModalLabel">-->
+            <!--支付-->
+            <!--</h4>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+            <!--恭喜您，支付成功！！！-->
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal">关闭-->
+            <!--</button>-->
+            <!--</div>-->
+            <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+            <!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
         </div>
     </div>
+</div>
 </div>
 
 
@@ -83,7 +81,12 @@
         }
         return "";
     }
-    function test() {
+    /**
+     * 支付
+     * ajax访问servlet
+     * 根据返回值弹出alert
+     * */
+    function pay() {
 //        alert("测试");
         var xmlhttp;
 //        if (str == "") {
@@ -106,9 +109,12 @@
                 else
                     alert("支付失败");
 //                document.getElementById("server_msg").innerHTML = "from server "+xmlhttp.responseText;
-            } else
-//                alert("访问出错 xmlhttp.readyState=" + xmlhttp.readyState + "   xmlhttp.status=" + xmlhttp.status);
-                document.getElementById("server_msg").innerHTML = "访问出错 xmlhttp.readyState="+xmlhttp.readyState+"   xmlhttp.status="+ xmlhttp.status;
+            }
+//            else{
+//                document.getElementById("server_msg").innerHTML = "访问出错 xmlhttp.readyState=" + xmlhttp.readyState + "   xmlhttp.status=" + xmlhttp.status;
+//            }
+////                alert("访问出错 xmlhttp.readyState=" + xmlhttp.readyState + "   xmlhttp.status=" + xmlhttp.status);
+
         }
         xmlhttp.open("GET", "pay.order?price=" + "100", true);
         xmlhttp.send();
@@ -126,6 +132,7 @@
     x = document.getElementById("show");
     //根据索引指定具体图片，然后显示出来
     x.src = srcList[index];
+
 
 
 </script>
