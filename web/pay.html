@@ -116,11 +116,12 @@
 ////                alert("访问出错 xmlhttp.readyState=" + xmlhttp.readyState + "   xmlhttp.status=" + xmlhttp.status);
 
         }
-        xmlhttp.open("GET", "pay.order?price=" + "100", true);
+        xmlhttp.open("GET", "pay.order?index=" + index, true);
         xmlhttp.send();
     }
     var index = getCookie("id");
     //    document.getElementById("index").innerHTML="图片索引是"+index;
+    //所有图片
     var srcList = [
         "img/a.jpg",
         "img/b.jpg",
@@ -129,6 +130,7 @@
         "img/e.jpg",
         "img/f.jpg"
     ];
+
     x = document.getElementById("show");
     //根据索引指定具体图片，然后显示出来
     x.src = srcList[index];
