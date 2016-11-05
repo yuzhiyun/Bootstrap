@@ -15,7 +15,7 @@
         <a class="navbar-brand" href="#">支付</a>
     </div>
     <!--<ul class="nav nav-pills" >-->
-        <!--<li class="active"><a>支付</a></li>-->
+    <!--<li class="active"><a>支付</a></li>-->
 
     <!--</ul>-->
 </nav>
@@ -23,7 +23,7 @@
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-6 column">
-            <img id="show" alt="140x140"  class="img-thumbnail" />
+            <img id="show" alt="140x140" class="img-thumbnail"/>
         </div>
         <div class="col-md-6 column">
             <p>
@@ -40,10 +40,12 @@
 
             </div>
 
-            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal" >支付</button>
-
+            <button class="btn btn-primary btn-lg btn-block" onclick="test()">测试ajax</button>
+            <p id="server_msg">来自服务器数据</p>
+            <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">支付</button>
             <!-- 模态框（Modal） -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -70,22 +72,49 @@
 </div>
 
 
-
 <script>
-//    通过cookie获取到上一个页面传递过来的索引
-function getCookie(cname)
-{
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++)
-    {
-        var c = ca[i].trim();
-        if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+    //    通过cookie获取到上一个页面传递过来的索引
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i].trim();
+            if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+        }
+        return "";
     }
-    return "";
-}
-    var index=getCookie("id");
-//    document.getElementById("index").innerHTML="图片索引是"+index;
+    function test() {
+//        alert("测试");
+        var xmlhttp;
+//        if (str == "") {
+//            document.getElementById("txtHint").innerHTML = "";
+//            return;
+//        }
+        if (window.XMLHttpRequest) {
+//     IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                if ("success" == xmlhttp.responseText)
+                    alert("支付成功");
+                else
+                    alert("支付失败");
+//                document.getElementById("server_msg").innerHTML = "from server "+xmlhttp.responseText;
+            } else
+//                alert("访问出错 xmlhttp.readyState=" + xmlhttp.readyState + "   xmlhttp.status=" + xmlhttp.status);
+                document.getElementById("server_msg").innerHTML = "访问出错 xmlhttp.readyState="+xmlhttp.readyState+"   xmlhttp.status="+ xmlhttp.status;
+        }
+        xmlhttp.open("GET", "pay.order?price=" + "100", true);
+        xmlhttp.send();
+    }
+    var index = getCookie("id");
+    //    document.getElementById("index").innerHTML="图片索引是"+index;
     var srcList = [
         "img/a.jpg",
         "img/b.jpg",
@@ -95,8 +124,10 @@ function getCookie(cname)
         "img/f.jpg"
     ];
     x = document.getElementById("show");
-//根据索引指定具体图片，然后显示出来
-    x.src=srcList[index];
+    //根据索引指定具体图片，然后显示出来
+    x.src = srcList[index];
+
+
 </script>
 </body>
 </html>

@@ -46,7 +46,10 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
 
         String username=request.getParameter("username");
         String password=request.getParameter("password");
+
+
         if("yuzhiyun".equals(username) && "123".equals(password)){
+//            重定向到主页面
             response.sendRedirect("index.html");
         }else{
             response.sendRedirect("error.html");
